@@ -54,6 +54,7 @@ public class CubePlacing : MonoBehaviour {
     private void StartPlacingCube()
     {
         currentCube = Instantiate(cubeAsset);
+        currentCube.GetComponent<CubeController>().StartPlacing();
         UpdateCubePosition();
 
         placingCube = true;
@@ -61,6 +62,7 @@ public class CubePlacing : MonoBehaviour {
 
     private void FinishPlacingCube()
     {
+        currentCube.GetComponent<CubeController>().FinishPlacing();
         currentCube = null;
 
         placingCube = false;
@@ -70,6 +72,7 @@ public class CubePlacing : MonoBehaviour {
     {
         Vector3 left = leftController.transform.position;
         Vector3 right = rightController.transform.position;
+        Debug.Log("New position: " + ((left + right) / 2));
         currentCube.transform.position = (left + right) / 2;
         currentCube.transform.localScale = right - left;
     }
