@@ -1,0 +1,8 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <UnityInstallationDir>C:\Program Files\Unity HoloLens 5.4.0f3-HTP\Editor</UnityInstallationDir>
+        <UnityWSAPlayerDir>C:\Program Files\Unity HoloLens 5.4.0f3-HTP\Editor\Data\PlaybackEngines\MetroSupport</UnityWSAPlayerDir>
+        <UnityWSAToolsDir>$(SolutionDir)Unity\Tools</UnityWSAToolsDir>
+        <UnityProjectDir>C:\Users\Drew\Projects\HoloViveObserver\HoloViveObserver</UnityProjectDir>
+    </PropertyGroup>
+</Project>
