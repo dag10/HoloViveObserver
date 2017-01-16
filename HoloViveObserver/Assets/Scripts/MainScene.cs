@@ -2,8 +2,10 @@
 using UnityEngine.VR;
 using UnityEngine.SceneManagement;
 
-public class MainScene : MonoBehaviour {
-	void Start() {
+public class MainScene : MonoBehaviour
+{
+    void Start()
+    {
         if (IsHoloLens)
         {
             SceneManager.LoadScene("HoloLens");
@@ -12,7 +14,7 @@ public class MainScene : MonoBehaviour {
         {
             SceneManager.LoadScene("Vive");
         }
-	}
+    }
 
     public bool IsHoloLens
     {
@@ -29,7 +31,8 @@ public class MainScene : MonoBehaviour {
             return VRSettings.loadedDeviceName.Equals("OpenVR");
         }
     }
-	
-	void Update() {
-	}
+
+    void Update()
+    {
+    }
 }
