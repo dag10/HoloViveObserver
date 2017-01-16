@@ -1,34 +1,32 @@
 ﻿using UnityEngine;
 using UnityEngine.VR;
-using UnityEngine.SceneManagement;
 
 public class MainScene : MonoBehaviour
 {
+    public GameObject holoLensCamera;
+    public GameObject vrCameraRig;
+    public HoloViveNetworkManager networkManager;
+
+    public string serverAddress;
+    public int serverPort;
+
     void Start()
     {
-        if (IsHoloLens)
+        if (Utils.IsHoloLens)
         {
-            SceneManager.LoadScene("HoloLens");
+            vrCameraRig.SetActive(false);
+            holoLensCamera.SetActive(true);
+            networkManager.StartHoloLensClient(serverAddress, serverPort);
         }
-        else if (IsVR)
+        else if (Utils.IsVR)
         {
-            SceneManager.LoadScene("Vive");
+            holoLensCamera.SetActive(false);
+            vrCameraRig.SetActive(true);
+            networkManager.StartVRServer();
         }
-    }
-
-    public bool IsHoloLens
-    {
-        get
+        else
         {
-            return VRSettings.loadedDeviceName.Equals("HoloLens");
-        }
-    }
-
-    public bool IsVR
-    {
-        get
-        {
-            return VRSettings.loadedDeviceName.Equals("OpenVR");
+            Debug.LogError("Can't detect current device formfactor: " + VRSettings.loadedDeviceName);
         }
     }
 

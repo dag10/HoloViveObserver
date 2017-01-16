@@ -4,25 +4,14 @@ Observe a VR session from the same room using a HoloLens!
 # Building
 Open the HoloViveObserver directory using *Unity 5.5.0f3 (64-bit)*.
 
-## Building the Vive (SteamVR) app
-First, open the File -> Build Settings menu.
-
-Make sure *PC, Mac & Linux Standalone* is selected. If it isn't, select it and
-click *Switch Platform*. Then make sure the Main and Vive scenes are checked,
-but the HoloLens scene is unchecked. See the below image. Then close the Build
-Settings window and hit the play button in Unity.
-
-You don't need to open the Build Settings menu for subsequent VR runs unless
-you change those settings to run on HoloLens.
-
-![Vive Build Settings](HoloViveObserver/build_settings_vive.png)
+## Running the Vive (SteamVR) app
+To run on the Vive, simply hit the play button at the top of the Unity window.
 
 ## Building the HoloLens app
 Open the File -> Build Settings menu.
 
 Make sure *Windows Store* is selected. If it isn't, select it and click
-*Switch Platform*. Then make sure the Main and HoloLens scenes are checked,
-but the Vive scene is unchecked.
+*Switch Platform*.
 
 Then click *Build* and select the existing *App* folder. This will export
 a Visual Studio project. Yes, you have to do this each time you make changes

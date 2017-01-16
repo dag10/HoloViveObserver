@@ -2,9 +2,10 @@
     <PropertyGroup>
         <UnityInstallationDir>C:\Program Files\Unity\Editor\</UnityInstallationDir>
         <UnityWSASolutionName>Vive Observer</UnityWSASolutionName>
-        <UnityWSASolutionDir>D:\Users\Drew\Desktop\5.5 Test\HoloViveObserver\App\</UnityWSASolutionDir>
-        <UnityWSAPlayerDir>C:\Program Files\Unity\Editor\Data\PlaybackEngines\MetroSupport\</UnityWSAPlayerDir>
+        <UnityWSASolutionDir>C:\Users\Drew\Projects\HoloViveObserver\HoloViveObserver\App\</UnityWSASolutionDir>
+        <UnityWSAPlayerDir>$(UnityWSASolutionDir)</UnityWSAPlayerDir>
         <UnityWSAToolsDir>$(UnityWSASolutionDir)Unity\Tools\</UnityWSAToolsDir>
-        <UnityProjectDir>D:\Users\Drew\Desktop\5.5 Test\HoloViveObserver\</UnityProjectDir>
+        <UnityProjectDir>C:\Users\Drew\Projects\HoloViveObserver\HoloViveObserver\</UnityProjectDir>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 </Project>

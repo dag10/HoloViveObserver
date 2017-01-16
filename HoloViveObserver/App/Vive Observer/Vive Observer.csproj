@@ -186,12 +186,20 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>.\Unprocessed\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Content Include="MicStreamSelector.dll" />
+    <Content Include="MicStreamSelector.pdb" Condition="Exists('MicStreamSelector.pdb')" />
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>.\Unprocessed\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>.\Unprocessed\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Content Include="SharingClient.dll" />
+    <Content Include="SharingClient.pdb" Condition="Exists('SharingClient.pdb')" />
+    <Content Include="SpatialUnderstanding.dll" />
+    <Content Include="SpatialUnderstanding.pdb" Condition="Exists('SpatialUnderstanding.pdb')" />
+    <Content Include="PlaneFinding.dll" />
+    <Content Include="PlaneFinding.pdb" Condition="Exists('PlaneFinding.pdb')" />
     <Reference Include="UnityEngine.VR">
       <HintPath>.\Unprocessed\UnityEngine.VR.dll</HintPath>
     </Reference>
@@ -205,12 +213,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="D:\Users\Drew\Desktop\5.5 Test\HoloViveObserver\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj">
+    <ProjectReference Include="C:\Users\Drew\Projects\HoloViveObserver\HoloViveObserver\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj">
       <Project>{FBA57953-C0C3-F9D8-E86A-9F7C063B5FDE}</Project>
       <Name>Assembly-CSharp</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="D:\Users\Drew\Desktop\5.5 Test\HoloViveObserver\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj">
+    <ProjectReference Include="C:\Users\Drew\Projects\HoloViveObserver\HoloViveObserver\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj">
       <Project>{194D914D-0664-444E-B663-4D0F1C80AF68}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
       <Private>False</Private>
@@ -257,6 +265,24 @@
    </_GenerateAppxManifestDependsOn>
   </PropertyGroup>
 
+  <Target Name="BeforeResolveReferences" Condition="'$(BuildingProject)' == 'true'" > 
+        <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\MicStreamSelector.dll" DestinationFiles="$(ProjectDir)MicStreamSelector.dll" />
+            <Delete Files="$(ProjectDir)MicStreamSelector.pdb" Condition="Exists('$(ProjectDir)MicStreamSelector.pdb')" />
+            <Delete Files="$(ProjectDir)MicStreamSelector.dll.mdb" Condition="Exists('$(ProjectDir)MicStreamSelector.dll.mdb')" />
+            <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\MicStreamSelector.pdb" DestinationFiles="$(ProjectDir)MicStreamSelector.pdb" Condition="Exists('$(ProjectDir)Plugins\$(PlatformShortName)\MicStreamSelector.pdb')" />
+        <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\SharingClient.dll" DestinationFiles="$(ProjectDir)SharingClient.dll" />
+            <Delete Files="$(ProjectDir)SharingClient.pdb" Condition="Exists('$(ProjectDir)SharingClient.pdb')" />
+            <Delete Files="$(ProjectDir)SharingClient.dll.mdb" Condition="Exists('$(ProjectDir)SharingClient.dll.mdb')" />
+            <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\SharingClient.pdb" DestinationFiles="$(ProjectDir)SharingClient.pdb" Condition="Exists('$(ProjectDir)Plugins\$(PlatformShortName)\SharingClient.pdb')" />
+        <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\SpatialUnderstanding.dll" DestinationFiles="$(ProjectDir)SpatialUnderstanding.dll" />
+            <Delete Files="$(ProjectDir)SpatialUnderstanding.pdb" Condition="Exists('$(ProjectDir)SpatialUnderstanding.pdb')" />
+            <Delete Files="$(ProjectDir)SpatialUnderstanding.dll.mdb" Condition="Exists('$(ProjectDir)SpatialUnderstanding.dll.mdb')" />
+            <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\SpatialUnderstanding.pdb" DestinationFiles="$(ProjectDir)SpatialUnderstanding.pdb" Condition="Exists('$(ProjectDir)Plugins\$(PlatformShortName)\SpatialUnderstanding.pdb')" />
+        <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\PlaneFinding.dll" DestinationFiles="$(ProjectDir)PlaneFinding.dll" />
+            <Delete Files="$(ProjectDir)PlaneFinding.pdb" Condition="Exists('$(ProjectDir)PlaneFinding.pdb')" />
+            <Delete Files="$(ProjectDir)PlaneFinding.dll.mdb" Condition="Exists('$(ProjectDir)PlaneFinding.dll.mdb')" />
+            <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\PlaneFinding.pdb" DestinationFiles="$(ProjectDir)PlaneFinding.pdb" Condition="Exists('$(ProjectDir)Plugins\$(PlatformShortName)\PlaneFinding.pdb')" />
+   </Target>
   <Target Name="ModifyAppXPackage" Condition="'$(BuildingProject)' == 'true'" > 
         <Message Importance="high" Text="UnityInstallationDir &quot;$(UnityInstallationDir)&quot;." />
         <Message Importance="high" Text="UnityWSAPlayerDir &quot;$(UnityWSAPlayerDir)&quot;." />
