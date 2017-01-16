@@ -5,9 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vive Observer", "Vive Observer\Vive Observer.csproj", "{13A45C13-3265-47B8-BC48-A553B569DF55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "C:\Users\Drew\Projects\HoloViveObserver\HoloViveObserver\UWP\Assembly-CSharp\Assembly-CSharp.csproj", "{FBA57953-C0C3-F9D8-E86A-9F7C063B5FDE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "D:\Users\Drew\Desktop\5.5 Test\HoloViveObserver\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj", "{FBA57953-C0C3-F9D8-E86A-9F7C063B5FDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "C:\Users\Drew\Projects\HoloViveObserver\HoloViveObserver\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj", "{194D914D-0664-444E-B663-4D0F1C80AF68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "D:\Users\Drew\Desktop\5.5 Test\HoloViveObserver\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj", "{194D914D-0664-444E-B663-4D0F1C80AF68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

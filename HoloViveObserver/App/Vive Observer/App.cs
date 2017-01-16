@@ -15,6 +15,7 @@ namespace Vive_Observer
 
 		public App()
 		{
+			SetupOrientation();
 			m_AppCallbacks = new AppCallbacks();
 
 			// Allow clients of this class to append their own callbacks.
@@ -88,6 +89,11 @@ namespace Vive_Observer
 		public IFrameworkView CreateView()
 		{
 			return this;
+		}
+
+		private void SetupOrientation()
+		{
+			Unity.UnityGenerated.SetupDisplay();
 		}
 	}
 }

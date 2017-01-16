@@ -1,3 +1,4 @@
+Assembly-CSharp.dll
 UnityEngine.Analytics.dll
 UnityEngine.UI.dll
 UnityEngine.HoloLens.dll

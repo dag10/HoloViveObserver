@@ -5,17 +5,26 @@
 # Write a line equal to 'overwrite-all' (without quotes) to overwrite everything (preserved accross builds)
 # Write a line equal to 'keep-all' (without quotes) to keep files regardless their modification (preserved accross builds)
 # Default behavior is to never overwrite files
-Vive Observer.sln: 3A917D04D4489C1ABFC934A9520D621B
-Vive Observer\App.cs: 3525617DD059A6F3CE0EAE3F10432BE1
-Vive Observer\Package.appxmanifest: 528B8DA6A75C8031C05C6CE23ADDB4F7
+Vive Observer.sln: modified
+GeneratedProjects\UWP\Assembly-CSharp\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
+GeneratedProjects\UWP\Assembly-CSharp-firstpass\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
+Vive Observer\App.cs: FFA74432FA2C78D9BE653B891EA7C2D3
+Vive Observer\Package.appxmanifest: 8D7D61D8B89EDB44515A932DCB2C5C76
 Vive Observer\project.json: 1D02BC64BAC0D041019673A1C4C51737
-Vive Observer\Vive Observer.csproj: A6B65F99D6A1DB8786502B3215A8AE91
-Vive Observer\Vive Observer.csproj.user: BEFB8AC4886C4CFDD3C68445D6F19B04
+Vive Observer\Vive Observer.csproj: F00B5B0AD4A8B21DE7A7B15A3BD008C7
+Vive Observer\Vive Observer.csproj.user: modified
 Vive Observer\Assets\SplashScreen.scale-200.png: 60618416282ED104FD1473935716045D
 Vive Observer\Assets\Square150x150Logo.scale-200.png: E02834B4A5DFB97FF8E212C1CACBB084
 Vive Observer\Assets\Square44x44Logo.scale-200.png: 6C6EF27184ABE9D870A9D564953775DE
 Vive Observer\Assets\Square44x44Logo.targetsize-24_altform-unplated.png: 156637F7B5363E983E7A46D8E533A23D
 Vive Observer\Assets\StoreLogo.png: 90BD194CA4A7CFFF3E8B8222229857FB
 Vive Observer\Assets\Wide310x150Logo.scale-200.png: C96846A80DF667F87355569CD816192D
+Vive Observer\bin\x86\Release\AppX\Assets\SplashScreen.scale-200.png: 60618416282ED104FD1473935716045D
+Vive Observer\bin\x86\Release\AppX\Assets\Square150x150Logo.scale-200.png: E02834B4A5DFB97FF8E212C1CACBB084
+Vive Observer\bin\x86\Release\AppX\Assets\Square44x44Logo.scale-200.png: 6C6EF27184ABE9D870A9D564953775DE
+Vive Observer\bin\x86\Release\AppX\Assets\Square44x44Logo.targetsize-24_altform-unplated.png: 156637F7B5363E983E7A46D8E533A23D
+Vive Observer\bin\x86\Release\AppX\Assets\StoreLogo.png: 90BD194CA4A7CFFF3E8B8222229857FB
+Vive Observer\bin\x86\Release\AppX\Assets\Wide310x150Logo.scale-200.png: C96846A80DF667F87355569CD816192D
+Vive Observer\bin\x86\Release\AppX\Properties\Default.rd.xml: 72EB282657164E79A1C42F6240984826
 Vive Observer\Properties\AssemblyInfo.cs: 62F739FF13947D2148FF1983F9C83294
 Vive Observer\Properties\Default.rd.xml: 72EB282657164E79A1C42F6240984826
