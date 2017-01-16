@@ -15,7 +15,7 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer || !hmd)
             return;
 
-        this.transform.position = hmd.transform.position + (hmd.transform.forward * 1.2f);
-        this.transform.rotation = hmd.transform.rotation * Quaternion.Euler(45, 45, 45);
+        this.transform.position = hmd.transform.position;
+        this.transform.rotation = hmd.transform.rotation;
     }
 }

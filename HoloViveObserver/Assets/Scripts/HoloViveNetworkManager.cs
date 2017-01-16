@@ -2,53 +2,95 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.NetworkSystem;
 using UnityEngine.Networking.Match;
 
 public class HoloViveNetworkManager : NetworkManager
 {
+    public class CustomMsgType
+    {
+        public static short AddHybridPlayer = MsgType.Highest + 1;
+    };
+
+    public class AddHybridPlayerMessage : AddPlayerMessage
+    {
+        public Utils.PlayerType playerType;
+    }
+
     public GameObject vrPlayerPrefab;
     public GameObject holoLensPlayerPrefab;
+    
+    public delegate void AttemptingConnectionHandler();
+    public delegate void ConnectionEstablishedHandler();
+    public delegate void ConnectionLostHandler(bool willRetry);
 
-    [HideInInspector]
-    private new GameObject playerPrefab
+    public event AttemptingConnectionHandler AttemptingConnection;
+    public event ConnectionEstablishedHandler ConnectionEstablished;
+    public event ConnectionLostHandler ConnectionLost;
+
+    private bool triggeredAttemptingConnection = false;
+    private bool triggeredConnectionLost = false;
+
+    private static string DEFAULT_MATCH_NAME = "default";
+    private static string DEFAULT_MATCH_PASSWORD = "";
+
+    public void Start()
     {
-        set
-        {
-            base.playerPrefab = value;
-        }
-        get
-        {
-            return base.playerPrefab;
-        }
-    }
-
-    public void StartVRServer()
-    {
-        playerPrefab = vrPlayerPrefab;
-
-        Debug.Log("Vive detected. Starting MatchMaker and creating match.");
         StartMatchMaker();
-        matchMaker.CreateMatch("default", 3, true, "", "", "", 0, 0, this.OnMatchCreate);
 
-        //GetComponent<NetworkManagerHUD>().enabled = true;
-        //StartHost();
-    }
-
-    public void StartHoloLensClient(string address, int port)
-    {
-        playerPrefab = holoLensPlayerPrefab;
-        networkAddress = address;
-        networkPort = port;
-
-        Debug.Log("HoloLens detected. Starting MatchMaker.");
-        StartMatchMaker();
-        matchMaker.ListMatches(0, 5, "default", false, 0, 0, this.MyOnMatchList);
-        //matchMaker.JoinMatch(UnityEngine.Networking.Types.NetworkID.Invalid, "", )
-        //StartClient();
+        if (Utils.IsVR)
+        {
+            CreateDefaultMatch();
+            RegisterServerMessageHandlers();
+        }
+        else if (Utils.IsHoloLens)
+        {
+            JoinDefaultMatch();
+        }
     }
 
     #region VR Server
 
+    private void RegisterServerMessageHandlers()
+    {
+        NetworkServer.RegisterHandler(CustomMsgType.AddHybridPlayer, OnAddHybridPlayerMessage);
+    }
+
+    private void OnAddHybridPlayerMessage(NetworkMessage netMsg)
+    {
+        var msg = netMsg.ReadMessage<AddHybridPlayerMessage>();
+        SpawnPlayer(netMsg.conn, msg.playerControllerId, msg.playerType);
+    }
+
+    public void SpawnPlayer(NetworkConnection conn, short playerControllerId, Utils.PlayerType type)
+    {
+        GameObject prefab = null;
+        switch (type)
+        {
+            case Utils.PlayerType.HoloLens:
+                prefab = holoLensPlayerPrefab;
+                break;
+            case Utils.PlayerType.VR:
+                prefab = vrPlayerPrefab;
+                break;
+        }
+
+        if (!prefab)
+        {
+            Debug.LogError("Unspawnable player type for client: " + type.ToString());
+            return;
+        }
+
+        Debug.Log("Spawning a " + type.ToString() + " player.");
+        GameObject player = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+    }
+
+    private void CreateDefaultMatch()
+    {
+        matchMaker.CreateMatch(DEFAULT_MATCH_NAME, 3, true, "", "", "", 0, 0, this.OnMatchCreate);
+    }
+    
     public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
     {
         base.OnMatchCreate(success, extendedInfo, matchInfo);
@@ -62,24 +104,6 @@ public class HoloViveNetworkManager : NetworkManager
         }
     }
 
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
-        Debug.Log("Server started.");
-    }
-
-    public override void OnServerConnect(NetworkConnection conn)
-    {
-        base.OnServerConnect(conn);
-        Debug.Log("A client connected!");
-    }
-
-    public override void OnServerDisconnect(NetworkConnection conn)
-    {
-        base.OnServerDisconnect(conn);
-        Debug.Log("A client disconnected.");
-    }
-
     public override void OnServerError(NetworkConnection conn, int errorCode)
     {
         base.OnServerError(conn, errorCode);
@@ -90,6 +114,21 @@ public class HoloViveNetworkManager : NetworkManager
 
     #region HoloLens Client
 
+    private void JoinDefaultMatch()
+    {
+        if (!matchMaker)
+        {
+            StartMatchMaker();
+        }
+
+        matchMaker.ListMatches(0, 5, DEFAULT_MATCH_NAME, false, 0, 0, this.OnMatchList);
+
+        if (!triggeredAttemptingConnection)
+        {
+            triggeredAttemptingConnection = true;
+            if (AttemptingConnection != null) AttemptingConnection();
+        }
+    }
     public override void OnMatchJoined(bool success, string extendedInfo, MatchInfo matchInfo)
     {
         base.OnMatchJoined(success, extendedInfo, matchInfo);
@@ -105,22 +144,9 @@ public class HoloViveNetworkManager : NetworkManager
     public override void OnMatchList(bool success, string extendedInfo, List<MatchInfoSnapshot> matchList)
     {
         base.OnMatchList(success, extendedInfo, matchList);
-        if (success)
-        {
-            Debug.Log("OnMatchList successful");
-        } else
-        {
-            Debug.Log("OnMatchList unsuccessful");
-        }
-    }
-
-    public virtual void MyOnMatchList(bool success, string extendedInfo, List<MatchInfoSnapshot> matchList)
-    {
-        base.OnMatchList(success, extendedInfo, matchList);
 
         if (success)
         {
-
             if (matchList.Count > 0)
             {
                 Debug.Log("Found " + matchList.Count + " matches:");
@@ -128,11 +154,13 @@ public class HoloViveNetworkManager : NetworkManager
                 {
                     Debug.Log("Match: " + match.name + " (" + match.currentSize + ")");
                 }
-                matchMaker.JoinMatch(matchList[0].networkId, "", "", "", 0, 0, OnMatchJoined);
+
+                // Join the first match found
+                matchMaker.JoinMatch(matchList[0].networkId, DEFAULT_MATCH_PASSWORD, "", "", 0, 0, OnMatchJoined);
             } else
             {
-                Debug.Log("Found no matches. Refreshing match list...");
-                matchMaker.ListMatches(0, 5, "default", false, 0, 1, this.MyOnMatchList);
+                Debug.LogWarning("Found no matches. Refreshing match list...");
+                JoinDefaultMatch();
             }
         } else
         {
@@ -140,23 +168,33 @@ public class HoloViveNetworkManager : NetworkManager
         }
     }
 
-    public override void OnStartClient(NetworkClient client)
-    {
-        base.OnStartClient(client);
-        Debug.Log("Started client to connect to " + networkAddress + ":" + networkPort);
-    }
-
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
+        
         Debug.Log("Connected to server!");
+        if (Utils.IsHoloLens && ConnectionEstablished != null) ConnectionEstablished();
+        triggeredConnectionLost = false;
+
+        AddHybridPlayerMessage msg = new AddHybridPlayerMessage();
+        msg.playerControllerId = 0;
+        msg.playerType = Utils.CurrentPlayerType;
+        conn.Send(CustomMsgType.AddHybridPlayer, msg);
+
     }
 
     public override void OnClientDisconnect(NetworkConnection conn)
     {
         base.OnClientDisconnect(conn);
-        Debug.Log("Disconnected from server! Retrying...");
-        StartClient();
+
+        Debug.LogWarning("Disconnected from server! Rejoining default match...");
+        if (!triggeredConnectionLost)
+        {
+            triggeredConnectionLost = true;
+            if (ConnectionLost != null) ConnectionLost(true);
+        }
+
+        JoinDefaultMatch();
     }
 
     public override void OnClientError(NetworkConnection conn, int errorCode)
@@ -166,12 +204,4 @@ public class HoloViveNetworkManager : NetworkManager
     }
 
     #endregion
-
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-    }
 }
