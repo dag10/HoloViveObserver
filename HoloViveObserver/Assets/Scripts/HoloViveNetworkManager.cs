@@ -19,6 +19,8 @@ public class HoloViveNetworkManager : NetworkManager
 
     public GameObject vrPlayerPrefab;
     public GameObject holoLensPlayerPrefab;
+    public AlignmentManager alignmentManager;
+    public EventAnnouncer eventAnnouncer;
     
     public delegate void AttemptingConnectionHandler();
     public delegate void ConnectionEstablishedHandler();
@@ -37,6 +39,7 @@ public class HoloViveNetworkManager : NetworkManager
     public void Start()
     {
         StartMatchMaker();
+        eventAnnouncer.gameObject.SetActive(true);
 
         if (Utils.IsVR)
         {
@@ -49,19 +52,19 @@ public class HoloViveNetworkManager : NetworkManager
         }
     }
 
-    #region VR Server
-
+    #region Server
+    
     private void RegisterServerMessageHandlers()
     {
         NetworkServer.RegisterHandler(CustomMsgType.AddHybridPlayer, OnAddHybridPlayerMessage);
     }
-
+    
     private void OnAddHybridPlayerMessage(NetworkMessage netMsg)
     {
         var msg = netMsg.ReadMessage<AddHybridPlayerMessage>();
         SpawnPlayer(netMsg.conn, msg.playerControllerId, msg.playerType);
     }
-
+    
     public void SpawnPlayer(NetworkConnection conn, short playerControllerId, Utils.PlayerType type)
     {
         GameObject prefab = null;
@@ -83,7 +86,12 @@ public class HoloViveNetworkManager : NetworkManager
 
         Debug.Log("Spawning a " + type.ToString() + " player.");
         GameObject player = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        if (player.GetComponent<AlignmentClient>() != null)
+        {
+            player.GetComponent<AlignmentClient>().alignmentManagerObject = alignmentManager.gameObject;
+        }
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+        player.GetComponent<PlayerController>().RpcPlayerIsInitialized();
     }
 
     private void CreateDefaultMatch()
@@ -112,7 +120,7 @@ public class HoloViveNetworkManager : NetworkManager
 
     #endregion
 
-    #region HoloLens Client
+    #region Client
 
     private void JoinDefaultMatch()
     {
@@ -173,14 +181,13 @@ public class HoloViveNetworkManager : NetworkManager
         base.OnClientConnect(conn);
         
         Debug.Log("Connected to server!");
-        if (Utils.IsHoloLens && ConnectionEstablished != null) ConnectionEstablished();
+        if (ConnectionEstablished != null) ConnectionEstablished();
         triggeredConnectionLost = false;
 
         AddHybridPlayerMessage msg = new AddHybridPlayerMessage();
         msg.playerControllerId = 0;
         msg.playerType = Utils.CurrentPlayerType;
         conn.Send(CustomMsgType.AddHybridPlayer, msg);
-
     }
 
     public override void OnClientDisconnect(NetworkConnection conn)

@@ -265,6 +265,10 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\PlaneTargetGroupPicker.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\TextToSpeechManagerTest.cs" />
     <Compile Include="Assets\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\AlignmentClient.cs" />
+    <Compile Include="Assets\Scripts\AlignmentManager.cs" />
+    <Compile Include="Assets\Scripts\ControllerAlignment.cs" />
+    <Compile Include="Assets\Scripts\ControllerManagerAlignment.cs" />
     <Compile Include="Assets\Scripts\DeviceDependent.cs" />
     <Compile Include="Assets\Scripts\EventAnnouncer.cs" />
     <Compile Include="Assets\Scripts\HoloViveNetworkManager.cs" />
