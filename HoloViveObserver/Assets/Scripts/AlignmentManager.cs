@@ -61,14 +61,14 @@ public class AlignmentManager : NetworkBehaviour
     [Client]
     public void ApplyLocalAlignment(Vector3 position, float rotation)
     {
-        //Debug.Log("Applying LOCAL Alignment!");
-
-        //Vector3 newRotation = new Vector3(0, rotation, 0);
-        //foreach (var entity in entitiesToAlign)
-        //{
-        //    entity.transform.position = position;
-        //    entity.transform.rotation = Quaternion.Euler(newRotation);
-        //}
+        Debug.Log("Applying LOCAL Alignment!");
+        
+        foreach (var entity in entitiesToAlign)
+        {
+            //entity.transform.position = position;
+            entity.transform.position = (Quaternion.Euler(0, rotation, 0) * position);
+            entity.transform.rotation = Quaternion.Euler(0, rotation, 0);
+        }
     }
 
     [Server]

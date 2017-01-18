@@ -59,8 +59,16 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer || !hmd)
             return;
 
-        this.transform.position = (Quaternion.Euler(0, -alignmentRotation, 0) * hmd.transform.position) - alignmentTranslation;
-        this.transform.rotation = Quaternion.Euler(0, -alignmentRotation, 0) * hmd.transform.rotation;
+        //this.transform.localPosition = (Quaternion.Euler(0, alignmentRotation, 0) * hmd.transform.position) - alignmentTranslation;
+        //this.transform.localRotation = Quaternion.Euler(0, alignmentRotation, 0) * hmd.transform.rotation;
+
+        //Debug.Log("Update(). Does transform.parent exist? " + (transform.parent != null));
+
+        //var parentPosition = Quaternion.Euler(0, -alignmentRotation, 0) * transform.parent.position;
+        //this.transform.localPosition = (Quaternion.Euler(0, -alignmentRotation, 0) *
+        //    (hmd.transform.position)) - alignmentTranslation + parentPosition;
+        //this.transform.localRotation = Quaternion.Euler(0, -alignmentRotation, 0) *
+        //    (hmd.transform.rotation * transform.parent.rotation);
     }
 
     public bool IsHoloLens
