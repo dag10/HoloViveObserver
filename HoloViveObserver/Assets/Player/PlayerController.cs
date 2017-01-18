@@ -5,6 +5,12 @@ public class PlayerController : NetworkBehaviour
 {
     public Utils.PlayerType playerType;
 
+    [SyncVar]
+    public Vector3 alignmentTranslation;
+
+    [SyncVar]
+    public float alignmentRotation;
+
     private GameObject hmd;
     private AlignmentClient alignmentClient;
 
@@ -28,10 +34,23 @@ public class PlayerController : NetworkBehaviour
     [ClientRpc]
     public void RpcPlayerIsInitialized()
     {
-        if (alignmentClient != null)
+        if (alignmentClient != null && alignmentClient.isActiveAndEnabled)
         {
             alignmentClient.RequestAlignment();
         }
+    }
+
+    [Command]
+    private void CmdApplyRelativeAlignment(Vector3 translation, float rotation)
+    {
+        alignmentTranslation = translation;
+        alignmentRotation = rotation;
+    }
+
+    [Client]
+    public void ApplyRelativeAlignment(Vector3 translation, float rotation)
+    {
+        CmdApplyRelativeAlignment(translation, rotation);
     }
 
     [ClientCallback]
@@ -40,8 +59,8 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer || !hmd)
             return;
 
-        this.transform.position = hmd.transform.position;
-        this.transform.rotation = hmd.transform.rotation;
+        this.transform.position = (Quaternion.Euler(0, -alignmentRotation, 0) * hmd.transform.position) - alignmentTranslation;
+        this.transform.rotation = Quaternion.Euler(0, -alignmentRotation, 0) * hmd.transform.rotation;
     }
 
     public bool IsHoloLens

@@ -74,7 +74,7 @@ public class EventAnnouncer : MonoBehaviour
         Say("A player has started alignment.");
     }
 
-    private void AlignmentManager_EventAlignmentFinished(bool success)
+    private void AlignmentManager_EventAlignmentFinished(bool success, Vector3 position, float rotation)
     {
         if (LocalPlayerIsAligning) return;
 

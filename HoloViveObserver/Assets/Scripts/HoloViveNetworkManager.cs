@@ -21,6 +21,7 @@ public class HoloViveNetworkManager : NetworkManager
     public GameObject holoLensPlayerPrefab;
     public AlignmentManager alignmentManager;
     public EventAnnouncer eventAnnouncer;
+    public GameObject playersContainer;
     
     public delegate void AttemptingConnectionHandler();
     public delegate void ConnectionEstablishedHandler();
@@ -85,7 +86,7 @@ public class HoloViveNetworkManager : NetworkManager
         }
 
         Debug.Log("Spawning a " + type.ToString() + " player.");
-        GameObject player = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        GameObject player = Instantiate(prefab, playersContainer.transform);
         if (player.GetComponent<AlignmentClient>() != null)
         {
             player.GetComponent<AlignmentClient>().alignmentManagerObject = alignmentManager.gameObject;

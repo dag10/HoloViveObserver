@@ -14,10 +14,15 @@ public class ControllerAlignment : MonoBehaviour
             Debug.LogError("Controller must have SteamVR_TrackedController behavior.");
             return;
         }
+
+        controller.TriggerClicked += Controller_TriggerClicked;
     }
 
-    void Update()
+    private void Controller_TriggerClicked(object sender, ClickedEventArgs e)
     {
-
+        if (alignmentManager.CurrentlyAligning)
+        {
+            alignmentManager.ControllerClicked(this.transform);
+        }
     }
 }

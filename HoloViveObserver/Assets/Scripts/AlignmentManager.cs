@@ -10,7 +10,7 @@ public class AlignmentManager : NetworkBehaviour
     }
 
     public delegate void AlignmentStartedHandler();
-    public delegate void AlignmentFinishedHandler(bool success);
+    public delegate void AlignmentFinishedHandler(bool success, Vector3 position, float rotationY);
     public delegate void ControllersAvailableHandler();
     public delegate void ControllersUnavailableHandler();
 
@@ -25,6 +25,8 @@ public class AlignmentManager : NetworkBehaviour
 
     [SyncEvent]
     public event ControllersUnavailableHandler EventControllersUnavailable;
+
+    public GameObject[] entitiesToAlign;
 
     [SyncVar]
     private State state = State.Normal;
@@ -56,6 +58,19 @@ public class AlignmentManager : NetworkBehaviour
         }
     }
 
+    [Client]
+    public void ApplyLocalAlignment(Vector3 position, float rotation)
+    {
+        //Debug.Log("Applying LOCAL Alignment!");
+
+        //Vector3 newRotation = new Vector3(0, rotation, 0);
+        //foreach (var entity in entitiesToAlign)
+        //{
+        //    entity.transform.position = position;
+        //    entity.transform.rotation = Quaternion.Euler(newRotation);
+        //}
+    }
+
     [Server]
     public void RequestAlignment()
     {
@@ -80,7 +95,16 @@ public class AlignmentManager : NetworkBehaviour
         state = State.Normal;
 
         Debug.Log("Alignment canceled.");
-        if (EventAlignmentFinished != null) EventAlignmentFinished(false);
+        if (EventAlignmentFinished != null) EventAlignmentFinished(false, Vector3.zero, 0);
+    }
+
+    [Server]
+    private void FinishAlignment(Vector3 position, float rotation)
+    {
+        state = State.Normal;
+
+        Debug.Log("Alignment finished.");
+        if (EventAlignmentFinished != null) EventAlignmentFinished(true, position, rotation);
     }
 
     [Command]
@@ -98,5 +122,18 @@ public class AlignmentManager : NetworkBehaviour
             if (EventControllersUnavailable != null) EventControllersUnavailable();
             if (CurrentlyAligning) CancelAlignment();
         }
+    }
+
+    [Command]
+    private void CmdControllerClicked(Vector3 position, float rotation)
+    {
+        Debug.Log("Controller clicked at " + position + " with rotation " + rotation);
+        FinishAlignment(position, rotation);
+    }
+
+    [Client]
+    public void ControllerClicked(Transform transform)
+    {
+        CmdControllerClicked(transform.position, transform.rotation.eulerAngles.y);
     }
 }

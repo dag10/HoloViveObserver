@@ -18,18 +18,24 @@ public class AlignmentClient : NetworkBehaviour
     public event PlayerAlignmentStartedHandler EventPlayerAlignmentStarted;
     public event PlayerAlignmentFinishedHandler EventPlayerAlignmentFinished;
 
-    [SyncVar]
+    [SyncVar, HideInInspector]
     public GameObject alignmentManagerObject; // SyncVars can be GameObjects but not Behaviors.
     public AlignmentManager alignmentManager { get { return alignmentManagerObject.GetComponent<AlignmentManager>(); } }
 
     [SyncVar]
     private bool requestingAlignment = false;
 
+    public GameObject controllerTargetPrefab;
+
     private bool attemptedAlignment = false;
     private bool aligned = false;
+    private GameObject controllerTarget = null;
+    private PlayerController playerController = null;
 
     void Start()
     {
+        playerController = GetComponent<PlayerController>();
+
         if (isServer)
         {
             alignmentManager.EventAlignmentStarted += AlignmentManager_EventAlignmentStarted;
@@ -50,17 +56,18 @@ public class AlignmentClient : NetworkBehaviour
         if (requestingAlignment)
         {
             if (EventPlayerAlignmentStarted != null) EventPlayerAlignmentStarted();
+            CreateAlignmentTarget();
         }
     }
 
     [Server]
-    private void AlignmentManager_EventAlignmentFinished(bool success)
+    private void AlignmentManager_EventAlignmentFinished(bool success, Vector3 position, float rotation)
     {
-        RpcManagerFinished(success);
+        RpcManagerFinished(success, position, rotation);
     }
 
     [ClientRpc]
-    private void RpcManagerFinished(bool success)
+    private void RpcManagerFinished(bool success, Vector3 position, float rotation)
     {
         if (requestingAlignment)
         {
@@ -68,6 +75,7 @@ public class AlignmentClient : NetworkBehaviour
             {
                 requestingAlignment = false;
                 aligned = true;
+                ApplyAlignment(position, rotation);
             }
 
             if (EventPlayerAlignmentFinished != null) EventPlayerAlignmentFinished(success);
@@ -80,6 +88,33 @@ public class AlignmentClient : NetworkBehaviour
         if (!aligned && attemptedAlignment)
         {
             CmdRequestAlignment();
+        }
+    }
+
+    [Client]
+    private void CreateAlignmentTarget()
+    {
+        if (!isLocalPlayer) return;
+
+        Debug.Log("Creating floating controller.");
+        controllerTarget = Instantiate(controllerTargetPrefab);
+        controllerTarget.transform.position = Vector3.zero;
+        controllerTarget.transform.rotation = Quaternion.identity;
+    }
+
+    [Client]
+    private void ApplyAlignment(Vector3 position, float rotation)
+    {
+        if (isLocalPlayer && isClient)
+        {
+            var originalPosition = controllerTarget.transform.position;
+
+            var deltaPosition = position - originalPosition;
+            var deltaRotation = rotation - 180;
+
+            alignmentManager.ApplyLocalAlignment(-deltaPosition, -deltaRotation);
+            playerController.ApplyRelativeAlignment(-deltaPosition, -deltaRotation);
+            Destroy(controllerTarget);
         }
     }
 
@@ -116,6 +151,14 @@ public class AlignmentClient : NetworkBehaviour
         get
         {
             return requestingAlignment;
+        }
+    }
+
+    public bool IsAligned
+    {
+        get
+        {
+            return IsAligned;
         }
     }
 }
