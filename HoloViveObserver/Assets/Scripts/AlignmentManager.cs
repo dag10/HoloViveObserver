@@ -65,7 +65,6 @@ public class AlignmentManager : NetworkBehaviour
         
         foreach (var entity in entitiesToAlign)
         {
-            //entity.transform.position = position;
             entity.transform.position = (Quaternion.Euler(0, rotation, 0) * position);
             entity.transform.rotation = Quaternion.Euler(0, rotation, 0);
         }

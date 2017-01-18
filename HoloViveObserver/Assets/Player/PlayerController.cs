@@ -59,8 +59,8 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer || !hmd)
             return;
 
-        //this.transform.localPosition = (Quaternion.Euler(0, alignmentRotation, 0) * hmd.transform.position) - alignmentTranslation;
-        //this.transform.localRotation = Quaternion.Euler(0, alignmentRotation, 0) * hmd.transform.rotation;
+        this.transform.localPosition = (Quaternion.Euler(0, -alignmentRotation, 0) * hmd.transform.position) - alignmentTranslation;
+        this.transform.localRotation = Quaternion.Euler(0, -alignmentRotation, 0) * hmd.transform.rotation;
 
         //Debug.Log("Update(). Does transform.parent exist? " + (transform.parent != null));
 
