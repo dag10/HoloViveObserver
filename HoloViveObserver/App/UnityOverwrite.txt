@@ -11,7 +11,7 @@ GeneratedProjects\UWP\Assembly-CSharp-firstpass\project.json: 4FCF72A4D5EDB37E24
 Vive Observer\App.cs: FFA74432FA2C78D9BE653B891EA7C2D3
 Vive Observer\Package.appxmanifest: 1466EC37164C50DEBE7EE94DFBE7188A
 Vive Observer\project.json: 1D02BC64BAC0D041019673A1C4C51737
-Vive Observer\Vive Observer.csproj: 8D6646E75896664305A89F0A304AA644
+Vive Observer\Vive Observer.csproj: modified
 Vive Observer\Vive Observer.csproj.user: modified
 Vive Observer\Assets\SplashScreen.scale-200.png: 60618416282ED104FD1473935716045D
 Vive Observer\Assets\Square150x150Logo.scale-200.png: E02834B4A5DFB97FF8E212C1CACBB084

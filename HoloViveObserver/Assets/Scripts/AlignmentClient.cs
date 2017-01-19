@@ -38,6 +38,7 @@ public class AlignmentClient : NetworkBehaviour
 
         if (isServer)
         {
+            alignmentManagerObject = GetComponent<PlayerController>().alignmentManagerObject;
             alignmentManager.EventAlignmentStarted += AlignmentManager_EventAlignmentStarted;
             alignmentManager.EventAlignmentFinished += AlignmentManager_EventAlignmentFinished;
             alignmentManager.EventControllersAvailable += AlignmentManager_EventControllersAvailable;
@@ -91,6 +92,12 @@ public class AlignmentClient : NetworkBehaviour
         }
     }
 
+    [Command]
+    private void CmdTargetInfo(Vector3 position, float rotation)
+    {
+        alignmentManager.TargetInfo(position, rotation);
+    }
+
     [Client]
     private void CreateAlignmentTarget()
     {
@@ -100,6 +107,8 @@ public class AlignmentClient : NetworkBehaviour
         controllerTarget = Instantiate(controllerTargetPrefab);
         controllerTarget.transform.position = Vector3.zero;
         controllerTarget.transform.rotation = Quaternion.identity;
+
+        CmdTargetInfo(controllerTarget.transform.position, controllerTarget.transform.rotation.eulerAngles.y);
     }
 
     [Client]
@@ -107,13 +116,8 @@ public class AlignmentClient : NetworkBehaviour
     {
         if (isLocalPlayer && isClient)
         {
-            var originalPosition = controllerTarget.transform.position;
-
-            var deltaPosition = position - originalPosition;
-            var deltaRotation = rotation - 180;
-
-            alignmentManager.ApplyLocalAlignment(-deltaPosition, -deltaRotation);
-            playerController.ApplyRelativeAlignment(-deltaPosition, -deltaRotation);
+            alignmentManager.ApplyLocalAlignment(position, rotation);
+            playerController.ApplyRelativeAlignment(position, rotation);
             Destroy(controllerTarget);
         }
     }

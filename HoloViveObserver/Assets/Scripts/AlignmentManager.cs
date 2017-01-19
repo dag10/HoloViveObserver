@@ -28,6 +28,10 @@ public class AlignmentManager : NetworkBehaviour
 
     public GameObject[] entitiesToAlign;
 
+    private bool hasTarget;
+    private Vector3 targetPosition;
+    private float targetRotation;
+
     [SyncVar]
     private State state = State.Normal;
 
@@ -61,13 +65,19 @@ public class AlignmentManager : NetworkBehaviour
     [Client]
     public void ApplyLocalAlignment(Vector3 position, float rotation)
     {
-        Debug.Log("Applying LOCAL Alignment!");
-        
         foreach (var entity in entitiesToAlign)
         {
             entity.transform.position = (Quaternion.Euler(0, rotation, 0) * position);
             entity.transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
+    }
+
+    [Server]
+    public void TargetInfo(Vector3 position, float rotation)
+    {
+        targetPosition = position;
+        targetRotation = rotation;
+        hasTarget = true;
     }
 
     [Server]
@@ -82,6 +92,7 @@ public class AlignmentManager : NetworkBehaviour
     [Server]
     private void StartAlignment()
     {
+        hasTarget = false;
         state = State.Aligning;
 
         Debug.Log("Alignment started.");
@@ -91,6 +102,7 @@ public class AlignmentManager : NetworkBehaviour
     [Server]
     private void CancelAlignment()
     {
+        hasTarget = false;
         state = State.Normal;
 
         Debug.Log("Alignment canceled.");
@@ -100,10 +112,16 @@ public class AlignmentManager : NetworkBehaviour
     [Server]
     private void FinishAlignment(Vector3 position, float rotation)
     {
+        if (!hasTarget) return;
+
+        hasTarget = false;
         state = State.Normal;
 
-        Debug.Log("Alignment finished.");
-        if (EventAlignmentFinished != null) EventAlignmentFinished(true, position, rotation);
+        var deltaPosition = position - targetPosition;
+        var deltaRotation = rotation - targetRotation - 180;
+
+        Debug.Log("Alignment finished. Delta pos: " + deltaPosition + " rotation: " + deltaRotation);
+        if (EventAlignmentFinished != null) EventAlignmentFinished(true, -deltaPosition, -deltaRotation);
     }
 
     [Command]
@@ -126,8 +144,10 @@ public class AlignmentManager : NetworkBehaviour
     [Command]
     private void CmdControllerClicked(Vector3 position, float rotation)
     {
-        Debug.Log("Controller clicked at " + position + " with rotation " + rotation);
-        FinishAlignment(position, rotation);
+        if (hasTarget)
+        {
+            FinishAlignment(position, rotation);
+        }
     }
 
     [Client]

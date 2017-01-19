@@ -78,6 +78,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Blocks\Scripts\BlockController.cs" />
+    <Compile Include="Assets\Blocks\Scripts\BlockManager.cs" />
     <Compile Include="Assets\HoloToolkit-Examples\ColorPicker\GazeableColorPicker.cs" />
     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\CWGestureManager.cs" />
     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\DeleteLine.cs" />
@@ -264,7 +266,7 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\PlaneTargetGroup.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\PlaneTargetGroupPicker.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\TextToSpeechManagerTest.cs" />
-    <Compile Include="Assets\Player\PlayerController.cs" />
+    <Compile Include="Assets\Players\PlayerController.cs" />
     <Compile Include="Assets\Scripts\AlignmentBehavior.cs" />
     <Compile Include="Assets\Scripts\AlignmentClient.cs" />
     <Compile Include="Assets\Scripts\AlignmentManager.cs" />

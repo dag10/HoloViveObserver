@@ -87,10 +87,7 @@ public class HoloViveNetworkManager : NetworkManager
 
         Debug.Log("Spawning a " + type.ToString() + " player.");
         GameObject player = Instantiate(prefab, playersContainer.transform);
-        if (player.GetComponent<AlignmentClient>() != null)
-        {
-            player.GetComponent<AlignmentClient>().alignmentManagerObject = alignmentManager.gameObject;
-        }
+        player.GetComponent<PlayerController>().alignmentManagerObject = alignmentManager.gameObject;
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
         player.GetComponent<PlayerController>().RpcPlayerIsInitialized();
     }
