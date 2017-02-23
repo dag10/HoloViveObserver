@@ -52,6 +52,7 @@ Make sure *PC, Mac, Linux Standalone* is selected. If it isn't, select it and cl
 *Switch Platform*.
 
 On the SteamVR_Settings window click *Accept All*
+
 ![HoloLens Build Settings](HoloViveObserver/Screenshots/SteamVR_Settings.png)
 
 In the Unity Editor several errors will now be presented in the console tab.
@@ -77,8 +78,8 @@ Lines 324-327
 #endif */
 ~~~~
 
-~~~~
 Lines 332-335
+~~~~
 /* #if !UNITY_WSA_10_0
 		Cursor.visible = savedCursorVisible;
 		Cursor.lockState = savedCursorLockState;
