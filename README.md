@@ -14,7 +14,7 @@ Click the *New link...* button in the Services tab. Select your organization nam
 (username). Click *Create* button to create a cloud project.  Next click the
 Multiplayer service to enable.  Click *Go to dashboard* In a browser if you are
  logged into your Unity account a *Max players per room" field needs to be set as
- 2 or more and click save. Finally click <i>Refresh Configuration and you should
+ 2 or more and click save. Finally click <i>Refresh Configuration* and you should
  now see a list of your current configuration settings.
  
 ## Building the HoloLens app
