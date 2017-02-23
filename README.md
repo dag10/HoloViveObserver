@@ -41,7 +41,7 @@ whether you want to deploy to an actual HoloLens or the emulator.
 
 ![HoloLens Build Settings](HoloViveObserver/Screenshots/SteamVR_Settings_Do_Not_Press.png)
 
-NOTE: When choosing the UWP Build Type as *D3D* the SteamVR_Settings window will pop up.  Simply
+NOTE: When choosing the UWP Build Type as *D3D* the SteamVR_Settings window may pop up.  Simply
 leave this window up, DO NOT click *Accept All Settings* or *Ignore All*.  If you do this
 the project will not function properly on the HoloLens.
 
