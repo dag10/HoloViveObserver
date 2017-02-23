@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{589F34C1-7858-B7B9-406D-767F5F167F3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>C:/Program Files/Unity550/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:/Program Files/Unity550/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Blocks\Scripts\BlockController.cs" />
+     <Compile Include="Assets\Blocks\Scripts\BlockManager.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\ColorPicker\GazeableColorPicker.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\CWGestureManager.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\DeleteLine.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\IGeometry.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\IPolygonClosable.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\LineManager.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\MeasureManager.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\ModeTip.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\PolygonManager.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\Test\LineTest.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\SpatialMappingComponent\DropCube.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\SpatialUnderstanding\SpatialUnderstanding-FeatureOverview\Scripts\AppState.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\SpatialUnderstanding\SpatialUnderstanding-FeatureOverview\Scripts\Cursor.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\SpatialUnderstanding\SpatialUnderstanding-FeatureOverview\Scripts\LevelSolver.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\SpatialUnderstanding\SpatialUnderstanding-FeatureOverview\Scripts\LineDrawer.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\SpatialUnderstanding\SpatialUnderstanding-FeatureOverview\Scripts\ShapeDefinition.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\SpatialUnderstanding\SpatialUnderstanding-FeatureOverview\Scripts\SpaceVisualizer.cs" />
+     <Compile Include="Assets\HoloToolkit-Examples\SpatialUnderstanding\SpatialUnderstanding-FeatureOverview\Scripts\UI.cs" />
+     <Compile Include="Assets\HoloToolkit\CrossPlatform\Scripts\MetroHandleRef.cs" />
+     <Compile Include="Assets\HoloToolkit\CrossPlatform\Scripts\Reflection\ReflectionExtensions.cs" />
+     <Compile Include="Assets\HoloToolkit\CrossPlatform\Scripts\Reflection\TypeUtils.cs" />
+     <Compile Include="Assets\HoloToolkit\CrossPlatform\Scripts\SystemException.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\BasicCursor.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\CursorFeedback.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\CursorManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\FocusedObjectMessageSender.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\GameControllerManipulator.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\GazeManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\GazeStabilizer.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\GestureManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\GestureManipulator.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\HandGuidance.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\HandsManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\KeywordManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\Microphone\MicStream.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\OnGazeEnterEvent.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\OnGazeLeaveEvent.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\OnSelectEvent.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Scripts\SelectedObjectMessageSender.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\DisplayKeywords.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\FocusedObjectMessageReceiver.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\MicStreamDemo.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\ScaleObjectMessageReceiver.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\SelectedObjectMessageReceiver.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\SimpleGridGenerator.cs" />
+     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\SphereKeywords.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\AnchorDownloadRequest.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\AudioManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\BoolElement.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ClientConfig.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ClientRole.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\DirectPairConnector.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\DirectPairReceiver.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\DiscoveredSystem.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\DiscoveryClient.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\DiscoveryClientAdapter.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\DiscoveryClientListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\DoubleElement.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\Element.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ElementType.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\FloatElement.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ImageTagLocation.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ImageTagLocationListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ImageTagLocationType.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ImageTagManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\IntArrayElement.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\IntArrayListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\IntElement.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\Listener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\Log.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\LogManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\LogSeverity.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\LogWriter.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\LongElement.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\MachineSessionState.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\MessageChannel.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\MessageID.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\MessagePriority.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\MessageReliability.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\NetworkConnection.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\NetworkConnectionAdapter.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\NetworkConnectionListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\NetworkInMessage.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\NetworkOutMessage.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ObjectElement.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ObjectElementAdapter.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ObjectElementListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\PairMaker.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\PairingAdapter.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\PairingListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\PairingManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\PairingResult.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\Profile.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ProfileManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\Receipt.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\Room.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\RoomManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\RoomManagerAdapter.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\RoomManagerListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\Session.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SessionListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SessionManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SessionManagerAdapter.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SessionManagerListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SessionType.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\Settings.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SharingClient.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SharingClientPINVOKE.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SharingManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\StringElement.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SyncListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SystemRole.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\TagImage.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\User.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\UserPresenceManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\UserPresenceManagerAdapter.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\UserPresenceManagerListener.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\VisualPairConnector.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\VisualPairReceiver.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\XString.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SharingSessionTracker.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SharingStage.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\AutoJoinSession.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\ConsoleLogWriter.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\DirectPairing.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\ExternalProcess.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\MathUtils.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\Utils.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Tests\CustomMessages.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Tests\ImportExportAnchorManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Sharing\Tests\RemoteHeadManager.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\ObjectSurfaceObserver.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\FileSurfaceObserver.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\MeshSaver.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\RemoteMappingManager.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\RemoteMeshSource.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\RemoteMeshTarget.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\SimpleMeshSerializer.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\SpatialMappingManager.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\SpatialMappingObserver.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\SpatialMappingSource.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\SpatialProcessing\PlaneFinding.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\SpatialProcessing\RemoveSurfaceVertices.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\SpatialProcessing\SurfaceMeshesToPlanes.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\SpatialProcessing\SurfacePlane.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\TapToPlace.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Tests\Support\PlaneFindingTest.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialMapping\Tests\Support\SpatialProcessingTest.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\ActiveEvent.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\AudioClip.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\AudioContainer.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\AudioEvent.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\AudioSourcePlayClipExtension.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\AudioSourcesReference.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\MiniAudioEvent.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\SpatialSoundSettings.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\UAudioManager.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\UAudioManagerBase.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\UAudioMiniManager.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialUnderstanding\Scripts\SpatialUnderstanding.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialUnderstanding\Scripts\SpatialUnderstandingCustomMesh.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialUnderstanding\Scripts\SpatialUnderstandingDll.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialUnderstanding\Scripts\SpatialUnderstandingDllObjectPlacement.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialUnderstanding\Scripts\SpatialUnderstandingDllShapes.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialUnderstanding\Scripts\SpatialUnderstandingDllTopology.cs" />
+     <Compile Include="Assets\HoloToolkit\SpatialUnderstanding\Scripts\SpatialUnderstandingSourceMesh.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Billboard.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\DirectionIndicator.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\FixedAngularSize.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\FpsDisplay.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Interpolator.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\ManualCameraControl.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\NearPlaneFade.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\RollingStatistics.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\SimpleTagalong.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Singleton.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\SphereBasedTagalong.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\StabilizationPlaneModifier.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Tagalong.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\TextToSpeechManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\VectorExtensions.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\WorldAnchorManager.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\GestureResponder.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\PlaneTargetGroup.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\PlaneTargetGroupPicker.cs" />
+     <Compile Include="Assets\HoloToolkit\Utilities\Tests\TextToSpeechManagerTest.cs" />
+     <Compile Include="Assets\Players\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\AlignmentBehavior.cs" />
+     <Compile Include="Assets\Scripts\AlignmentClient.cs" />
+     <Compile Include="Assets\Scripts\AlignmentManager.cs" />
+     <Compile Include="Assets\Scripts\ControllerAlignment.cs" />
+     <Compile Include="Assets\Scripts\ControllerManagerAlignment.cs" />
+     <Compile Include="Assets\Scripts\DeviceDependent.cs" />
+     <Compile Include="Assets\Scripts\EventAnnouncer.cs" />
+     <Compile Include="Assets\Scripts\HoloViveNetworkManager.cs" />
+     <Compile Include="Assets\Scripts\MainScene.cs" />
+     <Compile Include="Assets\Scripts\Utils.cs" />
+     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
+     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
+     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
+     <Compile Include="Assets\SteamVR\Extras\SteamVR_TestThrow.cs" />
+     <Compile Include="Assets\SteamVR\Extras\SteamVR_TestTrackedCamera.cs" />
+     <Compile Include="Assets\SteamVR\Extras\SteamVR_TrackedController.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\BodyCollider.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\CircularDrive.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ComplexThrowable.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ControllerHoverHighlight.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\CustomEvents.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DebugUI.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DestroyOnDetachedFromHand.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DestroyOnParticleSystemDeath.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DestroyOnTriggerEnter.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DistanceHaptics.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DontDestroyOnLoad.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\EnumFlags.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\FallbackCameraController.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Hand.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\HapticRack.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\HideOnHandFocusLost.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\IgnoreHovering.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\InputModule.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Interactable.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\InteractableButtonEvents.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\InteractableHoverEvents.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ItemPackage.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ItemPackageReference.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ItemPackageSpawner.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearAnimation.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearAnimator.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearAudioPitch.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearBlendshape.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearDisplacement.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearDrive.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearMapping.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\PlaySound.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Player.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SeeThru.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SleepOnAwake.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SoundDeparent.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SoundPlayOneshot.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SpawnAndAttachAfterControllerIsTracking.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SpawnAndAttachToHand.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SpawnRenderModel.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Throwable.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\UIElement.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Unparent.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Util.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\VelocityEstimator.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Hints\Scripts\ControllerButtonHints.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\ArcheryTarget.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\Arrow.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\ArrowHand.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\ArrowheadRotation.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\Balloon.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\BalloonColliders.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\BalloonHapticBump.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\BalloonSpawner.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\ExplosionWobble.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\FireSource.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\Longbow.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\SoundBowClick.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Samples\Scripts\ControllerHintsExample.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Samples\Scripts\InteractableExample.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\AllowTeleportWhileAttachedToHand.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\ChaperoneInfo.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\IgnoreTeleportTrace.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\Teleport.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportArc.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportArea.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportMarkerBase.cs" />
+     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportPoint.cs" />
+     <Compile Include="Assets\SteamVR\Plugins\openvr_api.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Camera.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_CameraFlip.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_CameraMask.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Controller.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_ControllerManager.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Ears.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Events.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_ExternalCamera.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Fade.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Frustum.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_GameView.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_IK.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_LoadLevel.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Menu.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Overlay.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_PlayArea.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Render.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_RenderModel.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Skybox.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_SphericalProjection.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Stats.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_TestController.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedCamera.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
+     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\UnlitConfigurable.shader" />
+     <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
+     <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialUnderstandingSurface.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\VertexLitConfigurable.cginc" />
+     <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
+     <None Include="Assets\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
+     <None Include="Assets\SteamVR\InteractionSystem\Teleport\Shaders\Highlight.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\UnlitConfigurableTransparent.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\LambertianConfigurable.cginc" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\VertexLitConfigurable.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\StandardFast.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\LambertianConfigurable.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurableTransparent.shader" />
+     <None Include="Assets\HoloToolkit\SpatialMapping\Shaders\Wireframe.shader" />
+     <None Include="Assets\HoloToolkit\Input\Shaders\CursorShader.shader" />
+     <None Include="Assets\HoloToolkit\SpatialMapping\Shaders\Occlusion.shader" />
+     <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialMappingSurface.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\LambertianConfigurableTransparent.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\HoloToolkitCommon.cginc" />
+     <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
+     <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\VertexLitConfigurableTransparent.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurable.cginc" />
+     <None Include="Assets\SteamVR\readme.txt" />
+     <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\Silhouette.shader" />
+     <None Include="Assets\SteamVR\Resources\SteamVR_ColorOut.shader" />
+     <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\SeeThru.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurable.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\WindowOcclusion.shader" />
+     <None Include="Assets\HoloToolkit\Utilities\Shaders\UnlitConfigurable.cginc" />
+     <None Include="Assets\SteamVR\InteractionSystem\Readme_InteractionSystem.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity550/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity550/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.PlaymodeTestsRunner">
+ <HintPath>C:/Program Files/Unity550/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity550/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>C:/Program Files/Unity550/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VR">
+ <HintPath>C:/Program Files/Unity550/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Cecil">
+ <HintPath>C:/Program Files/Unity550/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
