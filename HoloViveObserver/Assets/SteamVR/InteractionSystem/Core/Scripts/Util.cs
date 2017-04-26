@@ -491,7 +491,8 @@ namespace Valve.VR.InteractionSystem
 		{
 #if UNITY_EDITOR
 			UnityEditor.EditorApplication.isPlaying = false;
-#elif !UNITY_WSA_10_0
+#elif UNITY_STANDALONE
+
         // NOTE: The recommended call for exiting a Unity app is UnityEngine.Application.Quit(), but as
         // of 5.1.0f3 this was causing the application to crash. The following works without crashing:
         System.Diagnostics.Process.GetCurrentProcess().Kill();
@@ -568,8 +569,8 @@ namespace Valve.VR.InteractionSystem
 
 
 		//-------------------------------------------------
-#if (UNITY_5_5 || UNITY_5_4)
-		public static float PathLength( UnityEngine.AI.NavMeshPath path )
+#if ( UNITY_5_4 )
+		public static float PathLength( NavMeshPath path )
 #else
 		public static float PathLength( UnityEngine.AI.NavMeshPath path )
 #endif
@@ -590,12 +591,12 @@ namespace Valve.VR.InteractionSystem
 			return lengthSoFar;
 		}
 
+#if UNITY_STANDALONE
 
 		//-------------------------------------------------
 		public static bool HasCommandLineArgument( string argumentName )
 		{
-#if !UNITY_WSA_10_0
-            string[] args = System.Environment.GetCommandLineArgs();
+			string[] args = System.Environment.GetCommandLineArgs();
 			for ( int i = 0; i < args.Length; i++ )
 			{
 				if ( args[i].Equals( argumentName ) )
@@ -603,17 +604,16 @@ namespace Valve.VR.InteractionSystem
 					return true;
 				}
 			}
-#endif
 
 			return false;
 		}
-
+#endif
+#if UNITY_STANDALONE
 
 		//-------------------------------------------------
 		public static int GetCommandLineArgValue( string argumentName, int nDefaultValue )
 		{
-#if !UNITY_WSA_10_0
-            string[] args = System.Environment.GetCommandLineArgs();
+			string[] args = System.Environment.GetCommandLineArgs();
 			for ( int i = 0; i < args.Length; i++ )
 			{
 				if ( args[i].Equals( argumentName ) )
@@ -626,17 +626,16 @@ namespace Valve.VR.InteractionSystem
 					return System.Int32.Parse( args[i + 1] );
 				}
 			}
-#endif
 
 			return nDefaultValue;
 		}
+#endif
 
-
-		//-------------------------------------------------
-		public static float GetCommandLineArgValue( string argumentName, float flDefaultValue )
+        //-------------------------------------------------
+#if UNITY_STANDALONE
+        public static float GetCommandLineArgValue( string argumentName, float flDefaultValue )
 		{
-#if !UNITY_WSA_10_0
-            string[] args = System.Environment.GetCommandLineArgs();
+			string[] args = System.Environment.GetCommandLineArgs();
 			for ( int i = 0; i < args.Length; i++ )
 			{
 				if ( args[i].Equals( argumentName ) )
@@ -649,14 +648,13 @@ namespace Valve.VR.InteractionSystem
 					return (float)Double.Parse( args[i + 1] );
 				}
 			}
-#endif
 
 			return flDefaultValue;
 		}
+#endif
 
-
-		//-------------------------------------------------
-		public static void SetActive( GameObject gameObject, bool active )
+        //-------------------------------------------------
+        public static void SetActive( GameObject gameObject, bool active )
 		{
 			if ( gameObject != null )
 			{
@@ -696,10 +694,8 @@ namespace Valve.VR.InteractionSystem
 	[System.Serializable]
 	public class AfterTimer_Component : MonoBehaviour
 	{
-		private GameObject go;
 		private System.Action callback;
 		private float triggerTime;
-		private float timer;
 		private bool timerActive = false;
 		private bool triggerOnEarlyDestroy = false;
 

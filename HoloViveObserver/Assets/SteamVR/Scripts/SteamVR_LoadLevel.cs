@@ -350,7 +350,8 @@ public class SteamVR_LoadLevel : MonoBehaviour
 				Debug.Log("LaunchInternalProcessError: " + error);
 #if UNITY_EDITOR
 				UnityEditor.EditorApplication.isPlaying = false;
-#elif !UNITY_WSA_10_0
+#elif UNITY_STANDALONE
+ 
 				System.Diagnostics.Process.GetCurrentProcess().Kill();
 #endif
             }
