@@ -20,7 +20,7 @@ public class AppState : Singleton<AppState>
     public TextMesh DebugSubDisplay;
     public Transform Parent_Scene;
     public SpatialMappingObserver MappingObserver;
-    public Cursor AppCursor;
+    public HoloToolkit.Unity.Cursor AppCursor;
 
     // Properties
     public string SpaceQueryDescription

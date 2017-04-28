@@ -230,7 +230,7 @@ public class SteamVR_RenderModel : MonoBehaviour
 					else if (error == EVRRenderModelError.None)
 					{
 						// Preload textures as well.
-						var renderModel = (RenderModel_t)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_t));
+						var renderModel = MarshalRenderModel(pRenderModel);
 
 						// Check the cache first.
 						var material = materials[renderModel.diffuseTextureId] as Material;
@@ -317,9 +317,9 @@ public class SteamVR_RenderModel : MonoBehaviour
 			error = renderModels.LoadRenderModel_Async(renderModelName, ref pRenderModel);
 			if (error != EVRRenderModelError.Loading)
 				break;
+#if UNITY_STANDALONE
 
-#if !UNITY_WSA_10_0
-            System.Threading.Thread.Sleep(1);
+			System.Threading.Thread.Sleep(1);
 #endif
 		}
 
@@ -329,7 +329,7 @@ public class SteamVR_RenderModel : MonoBehaviour
 			return null;
 		}
 
-		var renderModel = (RenderModel_t)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_t));
+        var renderModel = MarshalRenderModel(pRenderModel);
 
 		var vertices = new Vector3[renderModel.unVertexCount];
 		var normals = new Vector3[renderModel.unVertexCount];
@@ -380,15 +380,15 @@ public class SteamVR_RenderModel : MonoBehaviour
 				error = renderModels.LoadTexture_Async(renderModel.diffuseTextureId, ref pDiffuseTexture);
 				if (error != EVRRenderModelError.Loading)
 					break;
+#if UNITY_STANDALONE
 
-#if !UNITY_WSA_10_0
-                System.Threading.Thread.Sleep(1);
+				System.Threading.Thread.Sleep(1);
 #endif
 			}
 
 			if (error == EVRRenderModelError.None)
 			{
-				var diffuseTexture = (RenderModel_TextureMap_t)Marshal.PtrToStructure(pDiffuseTexture, typeof(RenderModel_TextureMap_t));
+				var diffuseTexture = MarshalRenderModel_TextureMap(pDiffuseTexture);
 				var texture = new Texture2D(diffuseTexture.unWidth, diffuseTexture.unHeight, TextureFormat.ARGB32, false);
 				if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Direct3D11)
 				{
@@ -399,9 +399,8 @@ public class SteamVR_RenderModel : MonoBehaviour
 						error = renderModels.LoadIntoTextureD3D11_Async(renderModel.diffuseTextureId, texture.GetNativeTexturePtr());
 						if (error != EVRRenderModelError.Loading)
 							break;
-
-#if !UNITY_WSA_10_0
-                        System.Threading.Thread.Sleep(1);
+#if UNITY_STANDALONE
+    					System.Threading.Thread.Sleep(1);
 #endif
 					}
 				}
@@ -583,7 +582,7 @@ public class SteamVR_RenderModel : MonoBehaviour
 	{
 		deviceConnectedAction = SteamVR_Events.DeviceConnectedAction(OnDeviceConnected);
 		hideRenderModelsAction = SteamVR_Events.HideRenderModelsAction(OnHideRenderModels);
-		modelSkinSettingsHaveChangedAction = SteamVR_Events.SystemAction("ModelSkinSettingsHaveChangedAction", OnModelSkinSettingsHaveChanged);
+		modelSkinSettingsHaveChangedAction = SteamVR_Events.SystemAction(EVREventType.VREvent_ModelSkinSettingsHaveChanged, OnModelSkinSettingsHaveChanged);
 	}
 
 	void OnEnable()
@@ -750,5 +749,61 @@ public class SteamVR_RenderModel : MonoBehaviour
 			UpdateModel();
 		}
 	}
+
+    /// <summary>
+    /// Helper function to handle the inconvenient fact that the packing for RenderModel_t is 
+    /// different on Linux/OSX (4) than it is on Windows (8)
+    /// </summary>
+    /// <param name="pRenderModel">native pointer to the RenderModel_t</param>
+    /// <returns></returns>
+    private RenderModel_t MarshalRenderModel(System.IntPtr pRenderModel)
+    {
+#if UNITY_STANDALONE
+        
+        if ((System.Environment.OSVersion.Platform == System.PlatformID.MacOSX) ||
+            (System.Environment.OSVersion.Platform == System.PlatformID.Unix))
+        {
+            var packedModel = (RenderModel_t_Packed)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_t_Packed));
+            RenderModel_t model = new RenderModel_t();
+            packedModel.Unpack(ref model);
+            return model;
+        }
+        else
+        {
+            return (RcenderModel_t)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_t));
+        }
+#else
+            return (RenderModel_t)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_t));
+
+#endif
+    }
+
+    /// <summary>
+    /// Helper function to handle the inconvenient fact that the packing for RenderModel_TextureMap_t is 
+    /// different on Linux/OSX (4) than it is on Windows (8)
+    /// </summary>
+    /// <param name="pRenderModel">native pointer to the RenderModel_TextureMap_t</param>
+    /// <returns></returns>
+    private RenderModel_TextureMap_t MarshalRenderModel_TextureMap(System.IntPtr pRenderModel)
+    {
+#if UNITY_STANDALONE
+            
+        if ((System.Environment.OSVersion.Platform == System.PlatformID.MacOSX) ||
+            (System.Environment.OSVersion.Platform == System.PlatformID.Unix))
+        {
+            var packedModel = (RenderModel_TextureMap_t_Packed)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_TextureMap_t_Packed));
+            RenderModel_TextureMap_t model = new RenderModel_TextureMap_t();
+            packedModel.Unpack(ref model);
+            return model;
+        }
+        else
+        {
+            return (RenderModel_TextureMap_t)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_TextureMap_t));
+        }
+#else
+        return (RenderModel_TextureMap_t)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_TextureMap_t));
+
+#endif
+    }
 }
 

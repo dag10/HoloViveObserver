@@ -63,21 +63,17 @@ public class SteamVR_ExternalCamera : MonoBehaviour
 					}
 					else if (key == "disableStandardAssets")
 					{
-#if !UNITY_WSA_10_0
-                        var field = c.GetType().GetField(key);
+						var field = c.GetType().GetField(key);
 						if (field != null)
 							field.SetValue(c, bool.Parse(split[1]));
-#endif
-                    }
-                    else
+					}
+					else
 					{
-#if !UNITY_WSA_10_0
 						var field = c.GetType().GetField(key);
 						if (field != null)
 							field.SetValue(c, float.Parse(split[1]));
-#endif
-                    }
-                }
+					}
+				}
 			}
 			config = (Config)c; //unbox
 

@@ -27,7 +27,7 @@ public class Utils
                         playerType = PlayerType.VR;
                         break;
                     default:
-                        playerType = PlayerType.Unknown;
+                        playerType = PlayerType.VR;
                         break;
                 }
             }
