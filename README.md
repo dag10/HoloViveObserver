@@ -2,7 +2,7 @@
 Observe a VR session from the same room using a HoloLens!
 
 # Building
-Open the HoloViveObserver directory using *Unity 5.5.0f3 (64-bit)*.
+Open the HoloViveObserver directory using *Unity 5.6 (64-bit)*.
 
 Never update the Steam VR plugin. It is modified by @Sorob to compile in Hololens
 
@@ -40,7 +40,7 @@ Within the *App* folder, open the *Vive Observer.sln* file. Do not be confused
 by the HoloViveObserver.sln file in the parent folder, that solution has no
 projects.
 
-Once within Visual Studio, select *Release* and target *x86*, then choose
+Once within Visual Studio 2017, select *Release* and target *x86*, then choose
 whether you want to deploy to an actual HoloLens or the emulator.  
 
 ![HoloLens Build Settings](HoloViveObserver/Screenshots/SteamVR_Settings_Do_Not_Press.png)
