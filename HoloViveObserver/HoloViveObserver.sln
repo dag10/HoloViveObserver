@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloViveObserver", "HoloViveObserver.csproj", "{9E0D06A0-9932-2F41-A44D-DD62C8CBDFCA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloViveObserver.Editor", "HoloViveObserver.Editor.csproj", "{F4C8809F-34B5-F116-BDC9-06ABCEB44AD8}"
