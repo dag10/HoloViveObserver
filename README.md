@@ -2,7 +2,7 @@
 Observe a VR session from the same room using a HoloLens!
 
 # Building
-Open the HoloViveObserver directory using *Unity 5.6 (64-bit)*.
+Open the HoloViveObserver directory using *Unity 5.5.2f1 (64-bit)*.
 
 Never update the Steam VR plugin. It is modified by @Sorob to compile in Hololens
 
@@ -58,37 +58,6 @@ Make sure *PC, Mac, Linux Standalone* is selected. If it isn't, select it and cl
 On the SteamVR_Settings window click *Accept All*
 
 ![HoloLens Build Settings](HoloViveObserver/Screenshots/SteamVR_Settings.png)
-
-In the Unity Editor several errors will now be presented in the console tab.
-
-![HoloLens Build Settings](HoloViveObserver/Screenshots/Script_Errors.png)
-
-To resolve these errors commet out the preprocressor directives shown in the following code blocks
-within the SteamVR_Menu.cs file as shown.
-
-Lines 244-247
-~~~~
-/*# if !UNITY_WSA_10_0
-        Cursor.visible = true;
-		Cursor.lockState = CursorLockMode.None;
-#endif */
-~~~~
-
-Lines 324-327
-~~~~
-/* #if !UNITY_WSA_10_0
-		savedCursorVisible = Cursor.visible;
-		savedCursorLockState = Cursor.lockState;
-#endif */
-~~~~
-
-Lines 332-335
-~~~~
-/* #if !UNITY_WSA_10_0
-		Cursor.visible = savedCursorVisible;
-		Cursor.lockState = savedCursorLockState;
-#endif */
-~~~~
 
 Now, hit the play button at the top of the Unity window.
 
