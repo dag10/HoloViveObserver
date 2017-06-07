@@ -203,4 +203,5 @@ sysinfo.txt
 *.stackdump
 project.lock.json
 App/[pP]layers/
+App/
 
