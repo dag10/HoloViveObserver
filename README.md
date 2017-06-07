@@ -2,7 +2,7 @@
 Observe a VR session from the same room using a HoloLens!
 
 # Building
-Open the HoloViveObserver directory using *Unity 5.5.2f1 (64-bit)*.
+Open the HoloViveObserver directory using *Unity 5.5.2f1 (64-bit)*, Unity 5.5.0 as well as Unity 5.6.x will not work.
 
 Never update the Steam VR plugin. It is modified by @Sorob to compile in Hololens
 
@@ -60,4 +60,11 @@ On the SteamVR_Settings window click *Accept All*
 ![HoloLens Build Settings](HoloViveObserver/Screenshots/SteamVR_Settings.png)
 
 Now, hit the play button at the top of the Unity window.
+
+## Building the HoloLens app after *Accept All*
+Make shure your build settings look like this:
+![HoloLens Build Settings](HoloViveObserver/Screenshots/build_settings_hololens.png)
+
+Also make shure your color space at the player settings is Gamma.
+![HoloLens Player Settings](HoloViveObserver/Screenshots/gama.jpg)
 
