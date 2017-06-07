@@ -204,4 +204,6 @@ sysinfo.txt
 project.lock.json
 App/[pP]layers/
 App/
+Assets/WSATestCertificate.pfx
+Assets/WSATestCertificate.pfx.meta
 
