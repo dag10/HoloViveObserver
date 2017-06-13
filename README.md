@@ -2,7 +2,7 @@
 Observe a VR session from the same room using a HoloLens!
 
 # Building
-Open the HoloViveObserver directory using *Unity 5.5.0f3 (64-bit)*.
+Open the HoloViveObserver directory using *Unity 5.5.2f1 (64-bit)*, Unity 5.5.0 as well as Unity 5.6.x will not work.
 
 Never update the Steam VR plugin. It is modified by @Sorob to compile in Hololens
 
@@ -40,7 +40,7 @@ Within the *App* folder, open the *Vive Observer.sln* file. Do not be confused
 by the HoloViveObserver.sln file in the parent folder, that solution has no
 projects.
 
-Once within Visual Studio, select *Release* and target *x86*, then choose
+Once within Visual Studio 2017, select *Release* and target *x86*, then choose
 whether you want to deploy to an actual HoloLens or the emulator.  
 
 ![HoloLens Build Settings](HoloViveObserver/Screenshots/SteamVR_Settings_Do_Not_Press.png)
@@ -59,36 +59,12 @@ On the SteamVR_Settings window click *Accept All*
 
 ![HoloLens Build Settings](HoloViveObserver/Screenshots/SteamVR_Settings.png)
 
-In the Unity Editor several errors will now be presented in the console tab.
-
-![HoloLens Build Settings](HoloViveObserver/Screenshots/Script_Errors.png)
-
-To resolve these errors commet out the preprocressor directives shown in the following code blocks
-within the SteamVR_Menu.cs file as shown.
-
-Lines 244-247
-~~~~
-/*# if !UNITY_WSA_10_0
-        Cursor.visible = true;
-		Cursor.lockState = CursorLockMode.None;
-#endif */
-~~~~
-
-Lines 324-327
-~~~~
-/* #if !UNITY_WSA_10_0
-		savedCursorVisible = Cursor.visible;
-		savedCursorLockState = Cursor.lockState;
-#endif */
-~~~~
-
-Lines 332-335
-~~~~
-/* #if !UNITY_WSA_10_0
-		Cursor.visible = savedCursorVisible;
-		Cursor.lockState = savedCursorLockState;
-#endif */
-~~~~
-
 Now, hit the play button at the top of the Unity window.
+
+## Building the HoloLens app after *Accept All*
+Make shure your build settings look like this:
+![HoloLens Build Settings](HoloViveObserver/Screenshots/build_settings_hololens.png)
+
+Also make shure your color space at the player settings is Gamma.
+![HoloLens Player Settings](HoloViveObserver/Screenshots/gama.jpg)
 

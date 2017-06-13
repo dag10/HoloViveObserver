@@ -770,7 +770,7 @@ public class SteamVR_RenderModel : MonoBehaviour
         }
         else
         {
-            return (RcenderModel_t)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_t));
+            return (RenderModel_t)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_t));
         }
 #else
             return (RenderModel_t)Marshal.PtrToStructure(pRenderModel, typeof(RenderModel_t));
