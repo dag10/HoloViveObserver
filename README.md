@@ -62,9 +62,9 @@ On the SteamVR_Settings window click *Accept All*
 Now, hit the play button at the top of the Unity window.
 
 ## Building the HoloLens app after *Accept All*
-Make shure your build settings look like this:
+Make sure your build settings look like this:
 ![HoloLens Build Settings](HoloViveObserver/Screenshots/build_settings_hololens.png)
 
-Also make shure your color space at the player settings is Gamma.
+Also make sure your color space at the player settings is Gamma.
 ![HoloLens Player Settings](HoloViveObserver/Screenshots/gama.jpg)
 
